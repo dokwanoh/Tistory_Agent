@@ -4,7 +4,13 @@
 
 ## Codex에서 바로 시작하기
 
-저장소를 Codex에서 연 뒤 아래 문구를 그대로 입력하면 신규 사용자 온보딩 인터뷰가 시작됩니다.
+아직 저장소를 내려받지 않았다면 본인의 Codex에 아래 문구를 그대로 입력하세요.
+
+```text
+https://github.com/dokwanoh/Tistory_Agent 저장소를 내려받고, README와 .agents/skills/tistory-onboarding/SKILL.md를 읽어서 신규 사용자 온보딩을 진행해 줘.
+```
+
+이미 저장소를 내려받아 Codex에서 해당 폴더를 열었다면 아래 문구로 신규 사용자 온보딩 인터뷰를 시작할 수 있습니다.
 
 > `$tistory-onboarding 처음 설정을 도와줘`
 
