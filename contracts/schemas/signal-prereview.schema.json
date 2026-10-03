@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["publication_eligible", "candidates"],
+  "properties": {
+    "publication_eligible": {"type": "boolean", "enum": [false]},
+    "candidates": {
+      "type": "array", "maxItems": 5,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["query", "reader_question", "rationale", "missing_evidence", "event_verified"],
+        "properties": {
+          "query": {"type": "string"},
+          "reader_question": {"type": "string"},
+          "rationale": {"type": "string"},
+          "missing_evidence": {"type": "string"},
+          "event_verified": {"type": "boolean", "enum": [false]}
+        }
+      }
+    }
+  }
+}

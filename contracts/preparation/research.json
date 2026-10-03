@@ -1,0 +1,9 @@
+{"type":"object","additionalProperties":false,"required":["candidates","policy_sources","search_notes","rejected_leads"],"properties":{
+"search_notes":{"type":"string"},
+"rejected_leads":{"type":"array","items":{"type":"object","additionalProperties":false,"required":["lead","reason","source_urls"],"properties":{"lead":{"type":"string"},"reason":{"type":"string"},"source_urls":{"type":"array","items":{"type":"string"}}}}},
+"policy_sources":{"type":"array","items":{"type":"string"}},
+"candidates":{"type":"array","items":{"type":"object","additionalProperties":false,"required":["id","title","event_at","event_time_basis","reader_question","rationale","draft","sources","claims"],"properties":{
+"id":{"type":"string"},"title":{"type":"string"},"event_at":{"type":"string"},"event_time_basis":{"type":"string"},"reader_question":{"type":"string"},"rationale":{"type":"string"},"draft":{"type":"string"},
+"sources":{"type":"array","items":{"type":"object","additionalProperties":false,"required":["url","primary","checked_at","support","access"],"properties":{"url":{"type":"string"},"primary":{"type":"boolean"},"checked_at":{"type":"string","enum":["RUNTIME"]},"support":{"type":"string"},"access":{"type":"string","enum":["search_lead"]}}}},
+"claims":{"type":"array","items":{"type":"object","additionalProperties":false,"required":["text","source_url"],"properties":{"text":{"type":"string"},"source_url":{"type":"string"}}}}
+}}}}}

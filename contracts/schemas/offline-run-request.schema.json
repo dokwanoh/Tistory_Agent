@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:tistory-growth-os:schema:offline-run-request:1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"type": "string", "const": "1.0.0"},
+    "request_id": {"type": "string", "pattern": "^request_[a-z0-9_-]{3,64}$"},
+    "topic_id": {"type": "string", "pattern": "^topic_[a-z0-9_-]{3,64}$"},
+    "title": {"type": "string", "minLength": 1},
+    "topic_cluster": {"type": "string", "minLength": 1},
+    "search_intent": {"type": "string", "enum": ["informational", "navigational", "commercial", "transactional"]},
+    "target_audience": {"type": "string", "minLength": 1},
+    "core_question": {"type": "string", "minLength": 1},
+    "primary_language": {"type": "string", "const": "ko-KR"},
+    "as_of": {"type": "string", "format": "date"},
+    "idempotency_key": {"type": "string", "minLength": 1},
+    "outline": {"type": "array", "items": {"$ref": "#/$defs/outline_item"}, "minItems": 1},
+    "source_evidence": {"type": "array", "items": {"$ref": "#/$defs/source_evidence"}, "minItems": 1},
+    "claims": {"type": "array", "items": {"$ref": "#/$defs/claim"}, "minItems": 1},
+    "media": {"type": "array", "items": {"$ref": "#/$defs/media"}},
+    "disclosure": {"$ref": "#/$defs/disclosure"},
+    "owner_decision_ids": {"type": "array", "items": {"type": "string", "pattern": "^ODR-[0-9]{3}$"}, "minItems": 1}
+  },
+  "required": ["schema_version", "request_id", "topic_id", "title", "topic_cluster", "search_intent", "target_audience", "core_question", "primary_language", "as_of", "idempotency_key", "outline", "source_evidence", "claims", "media", "disclosure", "owner_decision_ids"],
+  "$defs": {
+    "outline_item": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "section_id": {"type": "string", "pattern": "^section_[a-z0-9_-]{3,64}$"},
+        "heading": {"type": "string", "minLength": 1},
+        "summary": {"type": "string", "minLength": 1},
+        "claim_ids": {"type": "array", "items": {"type": "string", "pattern": "^claim_[a-z0-9_-]{3,64}$"}}
+      },
+      "required": ["section_id", "heading", "summary", "claim_ids"]
+    },
+    "source_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {"type": "string", "const": "1.0.0"},
+        "source_id": {"type": "string", "pattern": "^src_[a-z0-9_-]{3,64}$"},
+        "source_type": {"type": "string", "enum": ["official", "primary", "secondary", "owner"]},
+        "url": {"type": "string", "format": "uri"},
+        "title": {"type": "string", "minLength": 1},
+        "publisher": {"type": "string", "minLength": 1},
+        "checked_at": {"type": "string", "format": "date-time"},
+        "as_of": {"type": "string", "format": "date"},
+        "excerpt": {"type": "string", "minLength": 1},
+        "license_status": {"type": "string", "enum": ["link_and_paraphrase", "quoted_with_limit", "owner_provided", "review_required"]},
+        "supports_claim_ids": {"type": "array", "items": {"type": "string", "pattern": "^claim_[a-z0-9_-]{3,64}$"}, "minItems": 1}
+      },
+      "required": ["schema_version", "source_id", "source_type", "url", "title", "publisher", "checked_at", "as_of", "excerpt", "license_status", "supports_claim_ids"]
+    },
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {"type": "string", "const": "1.0.0"},
+        "claim_id": {"type": "string", "pattern": "^claim_[a-z0-9_-]{3,64}$"},
+        "kind": {"type": "string", "enum": ["factual", "first_person_experience", "disclosure", "opinion"]},
+        "text": {"type": "string", "minLength": 1},
+        "support_state": {"type": "string", "enum": ["supported", "unsupported", "owner_verification_required", "disputed"]},
+        "evidence_ids": {"type": "array", "items": {"type": "string", "pattern": "^src_[a-z0-9_-]{3,64}$"}},
+        "owner_evidence_status": {"type": "string", "enum": ["not_required", "verified", "required"]},
+        "as_of": {"type": "string", "format": "date"}
+      },
+      "required": ["schema_version", "claim_id", "kind", "text", "support_state", "evidence_ids", "owner_evidence_status", "as_of"]
+    },
+    "media": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "media_id": {"type": "string", "pattern": "^media_[a-z0-9_-]{3,64}$"},
+        "kind": {"type": "string", "const": "placeholder"},
+        "label": {"type": "string", "minLength": 1},
+        "alt": {"type": "string", "minLength": 1},
+        "license_status": {"type": "string", "const": "generated_placeholder"}
+      },
+      "required": ["media_id", "kind", "label", "alt", "license_status"]
+    },
+    "disclosure": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "required": {"type": "boolean"},
+        "text": {"type": "string", "minLength": 1},
+        "basis": {"type": "string", "enum": ["none", "advertising", "affiliate", "sponsorship", "ai_virtual_person"]}
+      },
+      "required": ["required", "text", "basis"]
+    }
+  }
+}

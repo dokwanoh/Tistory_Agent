@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "blog_url": "https://example.tistory.com",
+  "checked_date": "2026-09-07",
+  "posts": [
+    {
+      "canonical_url": "https://example.tistory.com/entry/sample-movie",
+      "title": "2030년 샘플 영화 개봉 일정",
+      "published_at": "2020-02-10T00:11:02+09:00",
+      "modified_at": "2020-02-10T00:11:02+09:00",
+      "category": "생활정보"
+    },
+    {
+      "canonical_url": "https://example.tistory.com/entry/sample-medicine",
+      "title": "샘플 의약품 복용 방법과 부작용",
+      "published_at": "2020-01-11T10:00:00+09:00",
+      "modified_at": "2020-01-11T10:00:00+09:00",
+      "category": "생활정보"
+    },
+    {
+      "canonical_url": "https://example.tistory.com/entry/sample-economics",
+      "title": "샘플 경제 개념 안내",
+      "published_at": "2020-01-05T10:00:00+09:00",
+      "modified_at": "2020-01-05T10:00:00+09:00",
+      "category": "경제"
+    }
+  ]
+}

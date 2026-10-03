@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:tistory-growth-os:schema:published-post:1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"type": "string", "const": "1.0.0"},
+    "post_id": {"type": "string", "pattern": "^post_[a-z0-9_-]{3,64}$"},
+    "manifest_id": {"type": "string", "pattern": "^manifest_[a-f0-9]{16,64}$"},
+    "actual_url": {"type": "string", "format": "uri"},
+    "title": {"type": "string", "minLength": 1},
+    "public_state": {"type": "string", "enum": ["draft", "private", "published"]},
+    "body_hash": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "published_at": {"type": "string", "format": "date-time"},
+    "verified_at": {"type": "string", "format": "date-time"},
+    "verification_status": {"type": "string", "enum": ["verified", "mismatch", "unknown"]}
+  },
+  "required": ["schema_version", "post_id", "manifest_id", "actual_url", "title", "public_state", "body_hash", "published_at", "verified_at", "verification_status"]
+}

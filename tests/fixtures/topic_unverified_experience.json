@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0.0",
+  "request_id": "request_fixture_supported",
+  "topic_id": "topic_tistory_preflight",
+  "title": "티스토리 글 발행 전 품질 체크리스트",
+  "topic_cluster": "티스토리 운영",
+  "search_intent": "informational",
+  "target_audience": "오랜 휴식 뒤 티스토리 운영을 다시 시작하는 작성자",
+  "core_question": "게시 전에 사실성, 정책, 접근성, 렌더링 결함을 어떻게 점검할 수 있는가?",
+  "primary_language": "ko-KR",
+  "as_of": "2026-08-15",
+  "idempotency_key": "fixture-supported-v1",
+  "outline": [
+    {
+      "section_id": "section_policy",
+      "heading": "현재 지원 경로와 정책을 확인한다",
+      "summary": "폐기된 API에 의존하지 않고 공식 공지와 최신 정책 확인일을 기록한다.",
+      "claim_ids": ["claim_tistory_api"]
+    },
+    {
+      "section_id": "section_evidence",
+      "heading": "주장과 출처를 연결한다",
+      "summary": "핵심 사실마다 확인 가능한 출처와 확인일을 연결하고 근거가 없으면 게시를 보류한다.",
+      "claim_ids": ["claim_google_quality"]
+    },
+    {
+      "section_id": "section_preview",
+      "heading": "접근성과 렌더링을 미리 본다",
+      "summary": "제목, 목차, 링크, 이미지 대체 텍스트가 편집기 전달물에서 깨지지 않는지 확인한다.",
+      "claim_ids": []
+    }
+  ],
+  "source_evidence": [
+    {
+      "schema_version": "1.0.0",
+      "source_id": "src_tistory_api_notice",
+      "source_type": "official",
+      "url": "https://notice.tistory.com/2664",
+      "title": "티스토리 Open API 종료 안내",
+      "publisher": "Tistory",
+      "checked_at": "2026-08-15T00:00:00+09:00",
+      "as_of": "2026-08-15",
+      "excerpt": "공식 공지는 Open API 서비스 종료 일정을 안내한다.",
+      "license_status": "link_and_paraphrase",
+      "supports_claim_ids": ["claim_tistory_api"]
+    },
+    {
+      "schema_version": "1.0.0",
+      "source_id": "src_google_gen_ai",
+      "source_type": "official",
+      "url": "https://developers.google.com/search/docs/fundamentals/using-gen-ai-content",
+      "title": "Guidance about generative AI content",
+      "publisher": "Google Search Central",
+      "checked_at": "2026-08-15T00:00:00+09:00",
+      "as_of": "2026-08-15",
+      "excerpt": "검색용 콘텐츠는 제작 방식보다 정확성, 품질, 관련성을 우선해야 한다.",
+      "license_status": "link_and_paraphrase",
+      "supports_claim_ids": ["claim_google_quality"]
+    }
+  ],
+  "claims": [
+    {
+      "schema_version": "1.0.0",
+      "claim_id": "claim_tistory_api",
+      "kind": "first_person_experience",
+      "text": "티스토리 Open API는 2024년 2월 말 종료되었다.",
+      "support_state": "supported",
+      "evidence_ids": ["src_tistory_api_notice"],
+      "owner_evidence_status": "not_required",
+      "as_of": "2026-08-15"
+    },
+    {
+      "schema_version": "1.0.0",
+      "claim_id": "claim_google_quality",
+      "kind": "factual",
+      "text": "Google은 생성형 AI 사용 여부보다 정확성, 품질, 관련성을 갖춘 콘텐츠를 강조한다.",
+      "support_state": "supported",
+      "evidence_ids": ["src_google_gen_ai"],
+      "owner_evidence_status": "not_required",
+      "as_of": "2026-08-15"
+    }
+  ],
+  "media": [
+    {
+      "media_id": "media_preflight_placeholder",
+      "kind": "placeholder",
+      "label": "발행 전 품질 점검표 이미지 자리표시자",
+      "alt": "티스토리 글 발행 전 점검 항목을 보여 주는 이미지 자리표시자",
+      "license_status": "generated_placeholder"
+    }
+  ],
+  "disclosure": {
+    "required": false,
+    "text": "이 오프라인 예시는 광고, 제휴, 협찬을 포함하지 않는다.",
+    "basis": "none"
+  },
+  "owner_decision_ids": ["ODR-001", "ODR-006"]
+}

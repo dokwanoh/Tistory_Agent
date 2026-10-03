@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:tistory-growth-os:schema:source-evidence:1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"type": "string", "const": "1.0.0"},
+    "source_id": {"type": "string", "pattern": "^src_[a-z0-9_-]{3,64}$"},
+    "source_type": {"type": "string", "enum": ["official", "primary", "secondary", "owner"]},
+    "url": {"type": "string", "format": "uri"},
+    "title": {"type": "string", "minLength": 1},
+    "publisher": {"type": "string", "minLength": 1},
+    "checked_at": {"type": "string", "format": "date-time"},
+    "as_of": {"type": "string", "format": "date"},
+    "excerpt": {"type": "string", "minLength": 1},
+    "license_status": {"type": "string", "enum": ["link_and_paraphrase", "quoted_with_limit", "owner_provided", "review_required"]},
+    "supports_claim_ids": {"type": "array", "items": {"type": "string", "pattern": "^claim_[a-z0-9_-]{3,64}$"}, "minItems": 1}
+  },
+  "required": ["schema_version", "source_id", "source_type", "url", "title", "publisher", "checked_at", "as_of", "excerpt", "license_status", "supports_claim_ids"]
+}

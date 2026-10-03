@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:tistory-growth-os:schema:topic-candidate:1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"type": "string", "const": "1.0.0"},
+    "topic_id": {"type": "string", "pattern": "^topic_[a-z0-9_-]{3,64}$"},
+    "title": {"type": "string", "minLength": 1},
+    "topic_cluster": {"type": "string", "minLength": 1},
+    "search_intent": {"type": "string", "enum": ["informational", "navigational", "commercial", "transactional"]},
+    "target_audience": {"type": "string", "minLength": 1},
+    "core_question": {"type": "string", "minLength": 1},
+    "primary_language": {"type": "string", "const": "ko-KR"},
+    "as_of": {"type": "string", "format": "date"},
+    "status": {"type": "string", "enum": ["captured", "screened", "rejected"]}
+  },
+  "required": ["schema_version", "topic_id", "title", "topic_cluster", "search_intent", "target_audience", "core_question", "primary_language", "as_of", "status"]
+}

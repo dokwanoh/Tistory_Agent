@@ -1,0 +1,8 @@
+{"type":"object","additionalProperties":false,"required":["action","subject_sha256","writing","source_urls","notes","claims"],"properties":{
+"action":{"type":"string","enum":["ready","revise","sources","media","replace_topic"]},"subject_sha256":{"type":"string"},"notes":{"type":"string"},"source_urls":{"type":"array","maxItems":8,"items":{"type":"string"}},
+"claims":{"type":"array","items":{"type":"object","additionalProperties":false,"required":["article_quote","source_url","source_quote"],"properties":{"article_quote":{"type":"string"},"source_url":{"type":"string"},"source_quote":{"type":"string"}}}},
+"writing":{"anyOf":[{"type":"null"},{"type":"object","additionalProperties":false,"required":["title","lead","summary","sections","ending","category","home_topic","tags","scenes"],"properties":{
+"title":{"type":"string"},"lead":{"type":"string"},"summary":{"type":"array","items":{"type":"string"}},"ending":{"type":"string"},"category":{"type":"string"},"home_topic":{"type":"string"},"tags":{"type":"array","items":{"type":"string"}},
+"sections":{"type":"array","items":{"type":"object","additionalProperties":false,"required":["heading","paragraphs","source_urls"],"properties":{"heading":{"type":"string"},"paragraphs":{"type":"array","items":{"type":"string"}},"source_urls":{"type":"array","items":{"type":"string"}}}}},
+"scenes":{"type":"array","items":{"type":"object","additionalProperties":false,"required":["brief","alt"],"properties":{"brief":{"type":"string"},"alt":{"type":"string"}}}}
+}}]}}}

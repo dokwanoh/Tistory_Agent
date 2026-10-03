@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:tistory-growth-os:schema:quality-report:1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"type": "string", "const": "1.0.0"},
+    "report_id": {"type": "string", "pattern": "^quality_[a-f0-9]{16,64}$"},
+    "draft_id": {"type": "string", "pattern": "^draft_[a-f0-9]{16,64}$"},
+    "status": {"type": "string", "enum": ["pass", "blocked"]},
+    "score": {"type": "number", "minimum": 0, "maximum": 100},
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {"type": "string", "enum": ["CLAIM_EVIDENCE_REQUIRED", "OWNER_EVIDENCE_REQUIRED", "CONTRACT_INVALID", "POLICY_EVIDENCE_REQUIRED", "DISCLOSURE_REQUIRED", "PROHIBITED_AD_FORMAT", "ACCESSIBILITY_REQUIRED"]},
+          "severity": {"type": "string", "enum": ["error", "warning"]},
+          "path": {"type": "string", "minLength": 1},
+          "message": {"type": "string", "minLength": 1}
+        },
+        "required": ["code", "severity", "path", "message"]
+      }
+    },
+    "claim_evidence_coverage": {"type": "number", "minimum": 0, "maximum": 1},
+    "external_write_count": {"type": "integer", "const": 0},
+    "evaluated_at": {"type": "string", "format": "date-time"}
+  },
+  "required": ["schema_version", "report_id", "draft_id", "status", "score", "findings", "claim_evidence_coverage", "external_write_count", "evaluated_at"]
+}

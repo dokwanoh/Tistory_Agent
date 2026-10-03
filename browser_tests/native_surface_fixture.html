@@ -1,0 +1,61 @@
+{{ARTICLE_INPUT}}
+<button id="category-btn" onclick="document.querySelector('#category-list').hidden=false">카테고리 없음</button>
+<div id="category-list" hidden><span onclick="document.querySelector('#category-btn').textContent=this.textContent;this.parentElement.hidden=true">생활정보</span></div>
+<input id="tagText" onkeydown="if(event.key==='Enter'){addTag(this.value);this.value=''}">
+<button id="publish-layer-btn" onclick="openPanel()">완료</button>
+<div role="dialog" hidden><legend>발행정보 입력폼</legend><strong class="tit_publish"></strong>
+<input id="open20" name="basicSet" value="20" type="radio"><label for="open20">공개</label>
+<dl id="home_subject"><button onclick="document.querySelector('#home-choice').hidden=false"><span class="mce-txt">선택 안 함</span></button></dl>
+<button class="btn_date on" onclick="setDate(this)">현재</button>
+<button class="btn_date" onclick="setDate(this)">예약</button>
+<button class="btn_reserve">2030-01-01</button>
+<input type="number" id="dateHour" value="14"><input type="number" id="dateMinute" value="27">
+<input id="urlPublish" value="fixture-post">
+<span class="thumb_g">대표 이미지</span>
+<button onclick="saveFixture()">공개 발행</button>
+<button onclick="this.closest('[role=dialog]').hidden=true">취소</button></div>
+<div id="home-choice" role="menuitem" hidden onclick="document.querySelector('#home_subject .mce-txt').textContent='국내여행';this.hidden=true">- 국내여행</div>
+<script>
+function addTag(value) {
+  const link = document.createElement('a'); link.href = '#';
+  link.setAttribute('aria-label', value + ' 태그 수정'); link.textContent = value;
+  document.querySelector('#tagText').after(link);
+}
+function setDate(button) {
+  document.querySelectorAll('.btn_date').forEach(item => item.classList.remove('on'));
+  button.classList.add('on');
+}
+function openPanel() {
+  document.querySelector('.tit_publish').textContent = document.querySelector('#post-title-inp').value;
+  const cover = frame.contentDocument.querySelector('img').src;
+  document.querySelector('.thumb_g').setAttribute('style', 'background-image: url("https://img1.daumcdn.net/thumb/C170x170/?fname=' + encodeURIComponent(cover) + '");');
+  document.querySelector('[role=dialog]').hidden = false;
+}
+function saveFixture() {
+  sessionStorage.setItem('savedArticle', JSON.stringify({
+    title: document.querySelector('#post-title-inp').value,
+    body: frame.contentDocument.body.innerHTML,
+    category: document.querySelector('#category-btn').textContent,
+    tags: [...document.querySelectorAll('a[aria-label]')].map(link => link.textContent),
+    home: document.querySelector('#home_subject .mce-txt').textContent,
+    hour: document.querySelector('#dateHour').value,
+    minute: document.querySelector('#dateMinute').value
+  }));
+  location.href = '/manage/posts/?fixtureSaved=1';
+}
+if (location.pathname === '/manage/newpost/93') {
+  const saved = JSON.parse(sessionStorage.getItem('savedArticle'));
+  document.querySelector('#post-title-inp').value = saved.title;
+  document.querySelector('#category-btn').textContent = saved.category;
+  saved.tags.forEach(addTag);
+  document.querySelector('#home_subject .mce-txt').textContent = saved.home;
+  document.querySelector('#open20').checked = true;
+  document.querySelector('#dateHour').value = saved.hour;
+  document.querySelector('#dateMinute').value = saved.minute;
+  setDate(document.querySelectorAll('.btn_date')[1]);
+  frame.addEventListener('load', () => {
+    frame.contentDocument.body.innerHTML = saved.body;
+    /* SAVED_BODY_VARIANT */
+  });
+}
+</script>

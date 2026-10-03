@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:tistory-growth-os:schema:content-brief:1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"type": "string", "const": "1.0.0"},
+    "brief_id": {"type": "string", "pattern": "^brief_[a-f0-9]{16,64}$"},
+    "topic_id": {"type": "string", "pattern": "^topic_[a-z0-9_-]{3,64}$"},
+    "title": {"type": "string", "minLength": 1},
+    "target_audience": {"type": "string", "minLength": 1},
+    "search_intent": {"type": "string", "enum": ["informational", "navigational", "commercial", "transactional"]},
+    "core_question": {"type": "string", "minLength": 1},
+    "claim_ids": {"type": "array", "items": {"type": "string", "pattern": "^claim_[a-z0-9_-]{3,64}$"}, "minItems": 1},
+    "source_evidence_ids": {"type": "array", "items": {"type": "string", "pattern": "^src_[a-z0-9_-]{3,64}$"}, "minItems": 1},
+    "section_ids": {"type": "array", "items": {"type": "string", "pattern": "^section_[a-z0-9_-]{3,64}$"}, "minItems": 1},
+    "as_of": {"type": "string", "format": "date"}
+  },
+  "required": ["schema_version", "brief_id", "topic_id", "title", "target_audience", "search_intent", "core_question", "claim_ids", "source_evidence_ids", "section_ids", "as_of"]
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:tistory-growth-os:schema:evolution-proposal:1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"type": "string", "const": "1.0.0"},
+    "proposal_id": {"type": "string", "pattern": "^evo_[a-z0-9_-]{3,64}$"},
+    "observed_trace_id": {"type": "string", "minLength": 1},
+    "bdw_class": {"type": "string", "enum": ["bottleneck", "delay", "waste"]},
+    "root_cause_hypothesis": {"type": "string", "minLength": 1},
+    "change_target": {"type": "string", "enum": ["prompt", "model", "reasoning", "tool", "harness", "workflow", "schema", "policy"]},
+    "expected_effect": {"type": "string", "minLength": 1},
+    "regression_risk": {"type": "string", "minLength": 1},
+    "eval_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1},
+    "acceptance_threshold": {"type": "number"},
+    "cost_budget_krw": {"type": "number", "minimum": 0},
+    "latency_budget_seconds": {"type": "number", "minimum": 0},
+    "canary_scope": {"type": "string", "minLength": 1},
+    "rollback_condition": {"type": "string", "minLength": 1},
+    "decision": {"type": "string", "enum": ["pending", "promote", "reject", "rollback"]},
+    "owner_approval_required": {"type": "boolean"},
+    "recorded_at": {"type": "string", "format": "date-time"}
+  },
+  "required": ["schema_version", "proposal_id", "observed_trace_id", "bdw_class", "root_cause_hypothesis", "change_target", "expected_effect", "regression_risk", "eval_ids", "acceptance_threshold", "cost_budget_krw", "latency_budget_seconds", "canary_scope", "rollback_condition", "decision", "owner_approval_required", "recorded_at"]
+}

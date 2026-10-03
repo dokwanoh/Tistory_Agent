@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "schemas": [
+    {"name": "topic-candidate", "version": "1.0.0", "file": "schemas/topic-candidate.schema.json", "$id": "urn:tistory-growth-os:schema:topic-candidate:1.0.0"},
+    {"name": "content-opportunity", "version": "1.0.0", "file": "schemas/content-opportunity.schema.json", "$id": "urn:tistory-growth-os:schema:content-opportunity:1.0.0"},
+    {"name": "source-evidence", "version": "1.0.0", "file": "schemas/source-evidence.schema.json", "$id": "urn:tistory-growth-os:schema:source-evidence:1.0.0"},
+    {"name": "claim", "version": "1.0.0", "file": "schemas/claim.schema.json", "$id": "urn:tistory-growth-os:schema:claim:1.0.0"},
+    {"name": "content-brief", "version": "1.0.0", "file": "schemas/content-brief.schema.json", "$id": "urn:tistory-growth-os:schema:content-brief:1.0.0"},
+    {"name": "article-draft", "version": "1.0.0", "file": "schemas/article-draft.schema.json", "$id": "urn:tistory-growth-os:schema:article-draft:1.0.0"},
+    {"name": "quality-report", "version": "1.0.0", "file": "schemas/quality-report.schema.json", "$id": "urn:tistory-growth-os:schema:quality-report:1.0.0"},
+    {"name": "publish-manifest", "version": "1.0.0", "file": "schemas/publish-manifest.schema.json", "$id": "urn:tistory-growth-os:schema:publish-manifest:1.0.0"},
+    {"name": "published-post", "version": "1.0.0", "file": "schemas/published-post.schema.json", "$id": "urn:tistory-growth-os:schema:published-post:1.0.0"},
+    {"name": "post-metrics", "version": "1.0.0", "file": "schemas/post-metrics.schema.json", "$id": "urn:tistory-growth-os:schema:post-metrics:1.0.0"},
+    {"name": "experiment", "version": "1.0.0", "file": "schemas/experiment.schema.json", "$id": "urn:tistory-growth-os:schema:experiment:1.0.0"},
+    {"name": "evolution-proposal", "version": "1.0.0", "file": "schemas/evolution-proposal.schema.json", "$id": "urn:tistory-growth-os:schema:evolution-proposal:1.0.0"},
+    {"name": "offline-run-request", "version": "1.0.0", "file": "schemas/offline-run-request.schema.json", "$id": "urn:tistory-growth-os:schema:offline-run-request:1.0.0"},
+    {"name": "run-report", "version": "1.0.0", "file": "schemas/run-report.schema.json", "$id": "urn:tistory-growth-os:schema:run-report:1.0.0"},
+    {"name": "process-traceability", "version": "1.0.0", "file": "schemas/process-traceability.schema.json", "$id": "urn:tistory-growth-os:schema:process-traceability:1.0.0"},
+    {"name": "policy-evidence", "version": "1.0.0", "file": "schemas/policy-evidence.schema.json", "$id": "urn:tistory-growth-os:schema:policy-evidence:1.0.0"},
+    {"name": "owner-decision", "version": "1.0.0", "file": "schemas/owner-decision.schema.json", "$id": "urn:tistory-growth-os:schema:owner-decision:1.0.0"},
+    {"name": "public-blog-inventory", "version": "1.0.0", "file": "schemas/public-blog-inventory.schema.json", "$id": "urn:tistory-growth-os:schema:public-blog-inventory:1.0.0"}
+  ]
+}

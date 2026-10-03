@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:tistory-growth-os:schema:claim:1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"type": "string", "const": "1.0.0"},
+    "claim_id": {"type": "string", "pattern": "^claim_[a-z0-9_-]{3,64}$"},
+    "kind": {"type": "string", "enum": ["factual", "first_person_experience", "disclosure", "opinion"]},
+    "text": {"type": "string", "minLength": 1},
+    "support_state": {"type": "string", "enum": ["supported", "unsupported", "owner_verification_required", "disputed"]},
+    "evidence_ids": {"type": "array", "items": {"type": "string", "pattern": "^src_[a-z0-9_-]{3,64}$"}},
+    "owner_evidence_status": {"type": "string", "enum": ["not_required", "verified", "required"]},
+    "as_of": {"type": "string", "format": "date"}
+  },
+  "required": ["schema_version", "claim_id", "kind", "text", "support_state", "evidence_ids", "owner_evidence_status", "as_of"]
+}

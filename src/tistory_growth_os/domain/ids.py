@@ -1,0 +1,21 @@
+from typing import NewType
+
+
+RequestId = NewType("RequestId", str)
+TopicId = NewType("TopicId", str)
+OpportunityId = NewType("OpportunityId", str)
+SourceId = NewType("SourceId", str)
+ClaimId = NewType("ClaimId", str)
+BriefId = NewType("BriefId", str)
+DraftId = NewType("DraftId", str)
+QualityReportId = NewType("QualityReportId", str)
+ManifestId = NewType("ManifestId", str)
+PackageId = NewType("PackageId", str)
+PostId = NewType("PostId", str)
+MetricsId = NewType("MetricsId", str)
+ExperimentId = NewType("ExperimentId", str)
+EvolutionProposalId = NewType("EvolutionProposalId", str)
+SectionId = NewType("SectionId", str)
+MediaId = NewType("MediaId", str)
+OwnerDecisionId = NewType("OwnerDecisionId", str)
+IdempotencyKey = NewType("IdempotencyKey", str)

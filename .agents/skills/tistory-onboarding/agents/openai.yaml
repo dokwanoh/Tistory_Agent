@@ -1,0 +1,4 @@
+interface:
+  display_name: "티스토리 첫 설정"
+  short_description: "간단한 인터뷰로 개인 설정을 안전하게 만들고 로컬 초안을 확인합니다"
+  default_prompt: "$tistory-onboarding 스킬로 이 프로젝트의 초기 설정을 도와줘."

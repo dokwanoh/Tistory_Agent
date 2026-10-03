@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:tistory-growth-os:schema:owner-decision:1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"type": "string", "const": "1.0.0"},
+    "decision_id": {"type": "string", "pattern": "^ODR-[0-9]{3}$"},
+    "question": {"type": "string", "minLength": 1},
+    "decision_area": {"type": "string", "enum": ["blog_access", "content_strategy", "monetization_budget", "owner_expertise", "brand_privacy", "publishing", "high_risk_topics"]},
+    "status": {"type": "string", "enum": ["pending", "answered", "approved", "rejected"]},
+    "blocking_scope": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "safe_default": {"type": "string", "minLength": 1},
+    "answer": {"type": "string"},
+    "updated_at": {"type": "string", "format": "date-time"}
+  },
+  "required": ["schema_version", "decision_id", "question", "decision_area", "status", "blocking_scope", "safe_default", "answer", "updated_at"]
+}

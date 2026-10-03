@@ -1,0 +1,42 @@
+<!doctype html><meta charset="utf-8">
+<textarea id="post-title-inp"></textarea>
+<button aria-label="첨부">첨부</button><button role="menuitem" onclick="document.querySelector('#file').click()">사진</button>
+<input id="file" type="file" hidden>
+<button id="editor-mode-layer-btn">모드</button>
+<button role="menuitem" onclick="htmlMode()">HTML</button>
+<button role="menuitem" onclick="basicMode()">기본모드</button>
+<div id="html-editor-container" hidden><div class="CodeMirror"><textarea></textarea></div></div>
+<iframe id="editor-tistory_ifr" srcdoc='<body id="tinymce" contenteditable="true"></body>'></iframe>
+<script>
+const frame = document.querySelector('iframe');
+const source = document.querySelector('.CodeMirror textarea');
+const container = document.querySelector('#html-editor-container');
+const confirmation = '작성 모드를 변경하시겠습니까?\n현재 서식이 유지되지 않을 수 있습니다.';
+document.querySelector('#file').onchange = function () {
+  const filename = this.files[0].name;
+  const figure = frame.contentDocument.createElement('figure');
+  figure.dataset.keType = 'image';
+  const image = frame.contentDocument.createElement('img');
+  image.src = 'https://cdn.test/' + filename;
+  image.dataset.filename = filename;
+  image.alt = '';
+  figure.append(image); frame.contentDocument.body.append(figure);
+};
+function htmlMode() {
+  if (!confirm(confirmation)) return;
+  source.value = [...frame.contentDocument.images].map(image => '[##_Image|' + image.src + '|CDM|1.3|' + JSON.stringify({filename: image.dataset.filename, alt: image.alt}) + '_##]').join('\n');
+  container.hidden = false; frame.hidden = true;
+}
+function basicMode() {
+  if (!confirm(confirmation)) return;
+  let result = source.value.replace(/\[##_Image\|([^|]+)\|CDM\|1\.3\|(.+?)_##\]/g, (_code, url, data) => {
+    const metadata = JSON.parse(data);
+    const figure = document.createElement('figure'); figure.dataset.keType = 'image';
+    const image = document.createElement('img'); image.src = url; image.alt = metadata.alt; image.dataset.filename = metadata.filename;
+    figure.append(image); return figure.outerHTML;
+  });
+  if (location.search === '?transform') result = result.replace('검수 본문', '변조 본문');
+  frame.contentDocument.body.innerHTML = result;
+  container.hidden = true; frame.hidden = false;
+}
+</script>

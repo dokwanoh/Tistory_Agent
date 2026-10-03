@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:tistory-growth-os:schema:content-opportunity:1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"type": "string", "const": "1.0.0"},
+    "opportunity_id": {"type": "string", "pattern": "^opp_[a-z0-9_-]{3,64}$"},
+    "topic_id": {"type": "string", "pattern": "^topic_[a-z0-9_-]{3,64}$"},
+    "demand_score": {"oneOf": [{"type": "number", "minimum": 0, "maximum": 100}, {"type": "string", "const": "unknown"}]},
+    "authority_score": {"oneOf": [{"type": "number", "minimum": 0, "maximum": 100}, {"type": "string", "const": "unknown"}]},
+    "reader_value_score": {"oneOf": [{"type": "number", "minimum": 0, "maximum": 100}, {"type": "string", "const": "unknown"}]},
+    "monetization_score": {"oneOf": [{"type": "number", "minimum": 0, "maximum": 100}, {"type": "string", "const": "unknown"}]},
+    "risk_penalty": {"oneOf": [{"type": "number", "minimum": 0, "maximum": 100}, {"type": "string", "const": "unknown"}]},
+    "cannibalization_penalty": {"oneOf": [{"type": "number", "minimum": 0, "maximum": 100}, {"type": "string", "const": "unknown"}]},
+    "confidence": {"type": "string", "enum": ["high", "medium", "low"]},
+    "score_version": {"type": "string", "minLength": 1},
+    "evaluated_at": {"type": "string", "format": "date-time"}
+  },
+  "required": ["schema_version", "opportunity_id", "topic_id", "demand_score", "authority_score", "reader_value_score", "monetization_score", "risk_penalty", "cannibalization_penalty", "confidence", "score_version", "evaluated_at"]
+}

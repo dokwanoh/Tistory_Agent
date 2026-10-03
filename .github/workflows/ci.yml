@@ -1,0 +1,28 @@
+name: Distribution checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: astral-sh/setup-uv@v6
+      - run: uv venv
+      - run: uv pip install pytest basedpyright -r requirements-browser.txt
+      - run: uv run --no-project basedpyright --pythonpath .venv/bin/python
+      - run: uv run --no-project python -m pytest -q
+        env:
+          PYTHONPATH: src
+      - run: uv run --no-project python -m tistory_growth_os.release_audit
+        env:
+          PYTHONPATH: src
+      - run: uv run --no-project python -m tistory_growth_os validate-contracts
+        env:
+          PYTHONPATH: src
+      - run: uv run --no-project python -m tistory_growth_os prepare-review --fixture tests/fixtures/topic_supported.json --output .artifacts/ci-review --dry-run
+        env:
+          PYTHONPATH: src

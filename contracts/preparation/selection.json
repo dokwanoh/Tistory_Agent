@@ -1,0 +1,1 @@
+{"type":"object","additionalProperties":false,"required":["candidate_id","rationale"],"properties":{"candidate_id":{"type":"string"},"rationale":{"type":"string"}}}

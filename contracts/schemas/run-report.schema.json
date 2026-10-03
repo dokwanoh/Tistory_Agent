@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:tistory-growth-os:schema:run-report:1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"type": "string", "const": "1.0.0"},
+    "run_id": {"type": "string", "pattern": "^run_[a-f0-9]{16,64}$"},
+    "request_id": {"type": "string", "pattern": "^request_[a-z0-9_-]{3,64}$"},
+    "status": {"type": "string", "enum": ["ready_for_approval", "blocked", "invalid"]},
+    "result_code": {"type": "string", "enum": ["READY_FOR_APPROVAL", "CLAIM_EVIDENCE_REQUIRED", "OWNER_EVIDENCE_REQUIRED", "CONTRACT_INVALID", "POLICY_EVIDENCE_REQUIRED", "DISCLOSURE_REQUIRED", "PROHIBITED_AD_FORMAT", "ACCESSIBILITY_REQUIRED", "IDEMPOTENCY_CONFLICT"]},
+    "state_history": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1},
+    "artifact_paths": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "external_write_count": {"type": "integer", "const": 0},
+    "completed_at": {"type": "string", "format": "date-time"}
+  },
+  "required": ["schema_version", "run_id", "request_id", "status", "result_code", "state_history", "artifact_paths", "external_write_count", "completed_at"]
+}

@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "owner-decisions-2026-09-07",
+  "owner": "unconfigured",
+  "decisions": [
+    {
+      "decision_id": "ODR-001",
+      "status": "OWNER_DECISION_REQUIRED",
+      "question": "Which private read-only analytics or exports, if any, can be made available for https://example.tistory.com?",
+      "reason": "The URL and public technical-audit scope are confirmed, but a current performance baseline cannot be inferred from public pages or historical self-reported figures.",
+      "default_safe_behavior": "Audit only public SEO and technical assets; do not imitate historical style; keep private metrics and current performance unknown.",
+      "changes_once_answered": "Defines an authorized data-access plan only; it does not authorize external writes or historical-style imitation.",
+      "offline_fixture_allowed": true,
+      "external_write_allowed": false
+    },
+    {
+      "decision_id": "ODR-002",
+      "status": "OWNER_DECISION_REQUIRED",
+      "question": "Are any owner-only topic exclusions material to a proposed article? Do not ask the owner to supply topics or historical strengths.",
+      "reason": "Demand discovery and content research are delegated to the agent; owner-only exclusions remain conditional decisions, not a prerequisite interview.",
+      "default_safe_behavior": "Research public demand, compare provisional topics and prepare evidence-backed local drafts autonomously; exclude high-risk advice by default and do not infer authority or performance. No remote delivery.",
+      "changes_once_answered": "Sets topic portfolio constraints and audit priorities without authorizing publication.",
+      "offline_fixture_allowed": true,
+      "external_write_allowed": false
+    },
+    {
+      "decision_id": "ODR-003",
+      "status": "OWNER_DECISION_REQUIRED",
+      "question": "What are the intended monetization sources and monthly cost ceiling?",
+      "reason": "Ad, affiliate, product, and model-cost controls cannot be safely inferred.",
+      "default_safe_behavior": "No monetization integration, paid service, ad configuration, or spend is enabled.",
+      "changes_once_answered": "Defines budget guardrails and applicable disclosure review paths; separate approval remains required for external service changes.",
+      "offline_fixture_allowed": true,
+      "external_write_allowed": false
+    },
+    {
+      "decision_id": "ODR-004",
+      "status": "OWNER_DECISION_REQUIRED",
+      "question": "Only if an article specifically uses the owner's personal experience: what evidence and disclosure permission support that claim? No expertise interview is currently requested.",
+      "reason": "The owner delegated topic discovery, learning and explanation to the agent. Personal-experience evidence is a conditional claim boundary, not a topic-selection prerequisite.",
+      "default_safe_behavior": "Proceed with independently researched, sourced local content and actually performed reproducible tests; reject unsupported owner-experience or fabricated agent-experience claims. Do not wait for an expertise answer.",
+      "changes_once_answered": "Allows evidence-backed experience claims to enter the claim ledger after review.",
+      "offline_fixture_allowed": true,
+      "external_write_allowed": false
+    },
+    {
+      "decision_id": "ODR-005",
+      "status": "OWNER_DECISION_REQUIRED",
+      "question": "What brand voice and public personal-information boundary should the blog use?",
+      "reason": "Voice and disclosure choices must not expose personal information or impersonate the owner.",
+      "default_safe_behavior": "Use neutral, non-personal, evidence-led Korean copy and retain controller/privacy facts as unknown.",
+      "changes_once_answered": "Sets editorial voice and privacy-review constraints; it does not decide legal applicability automatically.",
+      "offline_fixture_allowed": true,
+      "external_write_allowed": false
+    },
+    {
+      "decision_id": "ODR-006",
+      "status": "OWNER_DECISION_REQUIRED",
+      "question": "What initial publishing cadence and approval workflow are acceptable?",
+      "reason": "A safe release rate and human gate cannot be inferred from an inactive blog.",
+      "default_safe_behavior": "Keep approval_required mode, zero external writes, and no scheduling.",
+      "changes_once_answered": "Defines review queue expectations only; live publishing still needs explicit per-boundary approval.",
+      "offline_fixture_allowed": true,
+      "external_write_allowed": false
+    },
+    {
+      "decision_id": "ODR-007",
+      "status": "OWNER_DECISION_REQUIRED",
+      "question": "Will health, legal, financial, or other high-risk topics be in scope?",
+      "reason": "High-risk topics require stricter source, review, and exclusion rules.",
+      "default_safe_behavior": "Exclude high-risk topics from the initial offline vertical slice.",
+      "changes_once_answered": "Sets topic-specific review, expertise, and potential publication exclusions before any content is proposed.",
+      "offline_fixture_allowed": true,
+      "external_write_allowed": false
+    }
+  ]
+}
