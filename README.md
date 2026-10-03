@@ -9,7 +9,7 @@
 3. 블로그 주소, 주제, 독자·문체, 모델, 빈도·예산을 답합니다. 로그인 비밀번호나 API 키는 묻지 않습니다.
 4. 합성 사례로 로컬 검토 자료를 만들어 확인합니다.
 
-Python 3.11–3.14, macOS/Linux 권장. 기본 코어는 추가 패키지 없이 실행됩니다.
+Python 3.11–3.14와 macOS가 필요합니다. 브라우저·이미지 전달 경로가 macOS `sips`를 사용합니다. 초기 설정과 오프라인 핵심 검증은 표준 라이브러리만으로 실행됩니다.
 
 ```sh
 PYTHONPATH=src python -m tistory_growth_os.onboarding

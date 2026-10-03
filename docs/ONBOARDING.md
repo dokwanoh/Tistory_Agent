@@ -1,6 +1,6 @@
 # 처음 설정하기
 
-Python 3.11–3.14가 필요합니다. macOS/Linux에서 시작하세요. 브라우저 실행기는 POSIX 파일 잠금을 사용하므로 Windows 실게시 경로는 검증되지 않았습니다. 오프라인 코어는 표준 라이브러리만 사용합니다.
+Python 3.11–3.14와 macOS가 필요합니다. 이미지 변환과 브라우저 전달에서 macOS `sips`를 사용합니다. Windows와 Linux의 완전한 실행은 지원하지 않습니다. 오프라인 핵심 검증은 표준 라이브러리만 사용합니다.
 
 Codex에서 저장소를 열고 `$tistory-onboarding 처음 설정을 도와줘`라고 요청하세요. 스킬이 자동 인식되지 않으면 `.agents/skills/tistory-onboarding/SKILL.md`를 직접 읽도록 요청할 수 있습니다. 스킬 형식 안내: [OpenAI 공식 문서](https://developers.openai.com/codex/skills).
 
